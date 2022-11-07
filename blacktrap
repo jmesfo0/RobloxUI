@@ -1820,14 +1820,13 @@ function Blacklib:Window()
             end
             -- End Keybind --
 	    function ItemHand:MenuToggle()
-		local closetog = false
-			if closetog == true then
-				game.TweenService:Create(WindowFrame, TweenInfo.new(0.4, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut), {Size = UDim2.new(0, 550, 0, 350)}):Play()
-				game.TweenService:Create(CloseButton, TweenInfo.new(0.12, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut), {Rotation = 0}):Play()
-			else
-				game.TweenService:Create(WindowFrame, TweenInfo.new(0.4, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut), {Size = UDim2.new(0, 550, 0, 30)}):Play()
-				game.TweenService:Create(CloseButton, TweenInfo.new(0.12, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut), {Rotation = 45}):Play()
-			end
+		if closetog == true then
+		    game.TweenService:Create(WindowFrame, TweenInfo.new(0.4, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut), {Size = UDim2.new(0, 550, 0, 350)}):Play()
+		    game.TweenService:Create(CloseButton, TweenInfo.new(0.12, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut), {Rotation = 0}):Play()
+		else
+		    game.TweenService:Create(WindowFrame, TweenInfo.new(0.4, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut), {Size = UDim2.new(0, 550, 0, 30)}):Play()
+		    game.TweenService:Create(CloseButton, TweenInfo.new(0.12, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut), {Rotation = 45}):Play()
+		end
 		closetog = not closetog
 	    end            
             -- Label --
