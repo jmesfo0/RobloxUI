@@ -1322,7 +1322,7 @@ function Blacklib:Window()
                 SliderButton.BackgroundColor3 = _G.SectionColor
                 SliderButton.BackgroundTransparency = 1.000
                 SliderButton.BorderSizePixel = 0
-                SliderButton.Position = UDim2.new(0, 0, 0, -7)
+                SliderButton.Position = UDim2.new(0, start, 0, 3)
                 SliderButton.Size = UDim2.new(0, 346, 0, 25)
             
                 SliderCount.Name = "SliderCount"
