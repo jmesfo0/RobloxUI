@@ -1831,18 +1831,4 @@ function Blacklib:Window(gametitle)
     end
     return Tabs
 end
-
--- Themes --
-_G.WindowBackgroundColor = Color3.fromRGB(12, 12, 12)
-_G.TabWindowColor = Color3.fromRGB(30, 30, 30)
-_G.ContainerColor = Color3.fromRGB(23, 23, 23)
-_G.TitleTextColor = Color3.fromRGB(150, 150, 150)
-_G.ImageColor = Color3.fromRGB(150, 150, 150)
-_G.LineThemeColor = Color3.fromRGB(150, 150, 150)
-_G.TabTextColor = Color3.fromRGB(150, 150, 150)
-_G.TabImageColor = Color3.fromRGB(150, 150, 150)
-_G.TabThemeColor = Color3.fromRGB(250, 0, 0)
-_G.SectionColor = Color3.fromRGB(150, 150, 150)
-_G.SectionImageColor = Color3.fromRGB(150, 150, 150)
-_G.SectionTextColor = Color3.fromRGB(150, 150, 150)
-_G.SectionOn = Color3.fromRGB(0, 250, 0)
+return Blacklib
