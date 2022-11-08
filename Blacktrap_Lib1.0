@@ -1032,7 +1032,7 @@ function Blacklib:Window(gametitle)
             Container.CanvasSize = UDim2.new(0, 0, 0, ContainerLayout.AbsoluteContentSize.Y)
         end
         
-        function NewSection:Dropdown(droptitle, list, callback)
+        function NewSection:Dropdown(droptitle, v, list, callback)
             local dropfunc = {}
             local ItemCount = 0
             local FrameSize = 0
