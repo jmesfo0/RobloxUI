@@ -1244,7 +1244,7 @@ function Blacklib:Window()
             SliderFrame.Parent = Container
             SliderFrame.BackgroundColor3 = _G.SectionColor
             SliderFrame.BackgroundTransparency = 1.000
-            SliderFrame.Size = UDim2.new(0, 325, 0, 45)
+            SliderFrame.Size = UDim2.new(0, 425, 0, 45)
             
             SliderImage.Name = "SliderImage"
             SliderImage.Parent = SliderFrame
@@ -1263,7 +1263,7 @@ function Blacklib:Window()
             SliderSpace.Size = UDim2.new(0, 15, 0, 25)
             SliderSpace.Font = Enum.Font.GothamSemibold
             SliderSpace.Text = "|"
-            SliderSpace.TextSize = 14.000
+            SliderSpace.TextSize = 12.000
             SliderSpace.TextColor3 = _G.SectionTextColor
             SliderSpace.TextXAlignment = Enum.TextXAlignment.Center
             
@@ -1276,7 +1276,7 @@ function Blacklib:Window()
             SliderTitled.Font = Enum.Font.GothamSemibold
             SliderTitled.Text = slidertitle or "Slider Title"
             SliderTitled.TextColor3 = _G.SectionTextColor
-            SliderTitled.TextSize = 14.000
+            SliderTitled.TextSize = 12.000
             SliderTitled.TextXAlignment = Enum.TextXAlignment.Left
             
             SliderInput.Name = "SliderInput"
@@ -1309,7 +1309,7 @@ function Blacklib:Window()
             SliderBox.Font = Enum.Font.GothamSemibold
             SliderBox.Text = tostring(start and math.floor((start / maxvalue) * (maxvalue - minvalue) + minvalue) or 0)
             SliderBox.TextColor3 = _G.SectionTextColor
-            SliderBox.TextSize = 13.000
+            SliderBox.TextSize = 12.000
             SliderBox.TextXAlignment = Enum.TextXAlignment.Center
             SliderBox.TextEditable = true
             
