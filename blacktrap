@@ -1098,7 +1098,7 @@ function Blacklib:Window()
                     elseif ItemCount == 3 then
                         FrameSize = 90
                     elseif ItemCount >= 3 then
-                        FrameSize = 120
+                        FrameSize = 150
                     end
                     
                     local ItemList = Instance.new("TextButton")
@@ -1174,7 +1174,7 @@ function Blacklib:Window()
                     elseif ItemCount == 3 then
                         FrameSize = 90
                     elseif ItemCount >= 3 then
-                        FrameSize = 120
+                        FrameSize = 150
                     end
                     
                     local ItemList = Instance.new("TextButton")
