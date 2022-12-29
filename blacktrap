@@ -214,7 +214,7 @@ function Blacklib:Window()
     TabWindow.BorderSizePixel = 0
     TabWindow.Position = UDim2.new(0, 3, 0, 40)
     TabWindow.Size = UDim2.new(0, 150, 0, 0)
-    TabWindow.ScrollBarThickness = 0
+    --TabWindow.ScrollBarThickness = 0
     TabWindow.ClipsDescendants = true
     
     TabWindow:TweenSize(UDim2.new(0, 150, 0, 275), Enum.EasingDirection.InOut, Enum.EasingStyle.Linear, 10.0, true)
@@ -394,7 +394,7 @@ function Blacklib:Window()
         NotificationFrame.BorderSizePixel = 0
         NotificationFrame.ClipsDescendants = true
         NotificationFrame.Position = UDim2.new(0, 300, 0, 450)
-		NotificationFrame.ScrollBarThickness = 0
+		--NotificationFrame.ScrollBarThickness = 0
         NotificationFrame.Size = UDim2.new(0, 0, 0, 0)		
  
         NotificationFrame:TweenSize(UDim2.new(0, 400, 0, 250), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .6, true)
@@ -1041,7 +1041,7 @@ function Blacklib:Window()
                 DropItemScroll.BackgroundTransparency = 1.000
                 DropItemScroll.Position = UDim2.new(0, 3, 0, 60)
                 DropItemScroll.Size = UDim2.new(0, 375, 0, 0)
-                DropItemScroll.ScrollBarThickness = 0
+                --DropItemScroll.ScrollBarThickness = 0
                 DropItemScroll.CanvasSize = UDim2.new(0, 0, 0, 0)
                 
                 DropItemLayout.Name = "DropItemLayout"
