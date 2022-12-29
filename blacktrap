@@ -394,7 +394,6 @@ function Blacklib:Window()
         NotificationFrame.BorderSizePixel = 0
         NotificationFrame.ClipsDescendants = true
         NotificationFrame.Position = UDim2.new(0, 275, 0, 175)
-	    NotificationFrame.ScrollBarThickness = 0
         NotificationFrame.Size = UDim2.new(0, 0, 0, 0)		
  
         NotificationFrame:TweenSize(UDim2.new(0, 400, 0, 250), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .6, true)
