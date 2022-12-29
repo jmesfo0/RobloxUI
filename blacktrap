@@ -360,7 +360,7 @@ function Blacklib:Window()
     -- Notification --
     function Blacklib:Notification(titledesc, textdesc)
         local NotificationHold = Instance.new("TextButton")
-        local NotificationFrame = Instance.new("ScrollingFrame")
+        local NotificationFrame = Instance.new("Frame")
         local OkayBtn = Instance.new("TextButton")
         local OkayBtnCorner = Instance.new("UICorner")
         local OkayBtnTitle = Instance.new("TextLabel")
@@ -376,7 +376,7 @@ function Blacklib:Window()
         NotificationHold.BackgroundColor3 = _G.WindowBackgroundColor
         NotificationHold.BackgroundTransparency = 0.4
         NotificationHold.BorderSizePixel = 0
-        NotificationHold.Size = UDim2.new(0, 550, 0, 0)
+        NotificationHold.Size = UDim2.new(0, 550, 0, 350)
         NotificationHold.AutoButtonColor = false
         NotificationHold.Font = Enum.Font.SourceSans
         NotificationHold.Text = ""
@@ -394,7 +394,7 @@ function Blacklib:Window()
         NotificationFrame.BorderSizePixel = 0
         NotificationFrame.ClipsDescendants = true
         NotificationFrame.Position = UDim2.new(0, 275, 0, 175)
-		NotificationFrame.ScrollBarThickness = 0.5
+	    NotificationFrame.ScrollBarThickness = 0
         NotificationFrame.Size = UDim2.new(0, 0, 0, 0)		
  
         NotificationFrame:TweenSize(UDim2.new(0, 400, 0, 250), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .6, true)
@@ -418,7 +418,7 @@ function Blacklib:Window()
         OkayBtn.BackgroundColor3 = Color3.fromRGB(190, 190, 190)
         OkayBtn.BorderSizePixel = 1
         OkayBtn.BorderColor3 = _G.SectionColor
-        OkayBtn.Position = UDim2.new(0, 125, 0, 70)
+        OkayBtn.Position = UDim2.new(0, 125, 0, 190)
         OkayBtn.Size = UDim2.new(0, 150, 0, 30)
         OkayBtn.AutoButtonColor = true
         OkayBtn.Font = Enum.Font.Code
@@ -463,8 +463,8 @@ function Blacklib:Window()
         NotificationDesc.Parent = NotificationFrame
         NotificationDesc.BackgroundColor3 = _G.SectionColor
         NotificationDesc.BackgroundTransparency = 1.000
-        NotificationDesc.Position = UDim2.new(0, 10, 0, 110)
-        NotificationDesc.Size = UDim2.new(0, 380, 0, 0)
+        NotificationDesc.Position = UDim2.new(0, 10, 0, 70)
+        NotificationDesc.Size = UDim2.new(0, 380, 0, 100)
         NotificationDesc.Font = Enum.Font.Code
         NotificationDesc.Text = textdesc
         NotificationDesc.TextColor3 = Color3.fromRGB(180,180,180)
