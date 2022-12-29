@@ -360,7 +360,7 @@ function Blacklib:Window()
     -- Notification --
     function Blacklib:Notification(titledesc, textdesc)
         local NotificationHold = Instance.new("TextButton")
-        local NotificationFrame = Instance.new("Frame")
+        local NotificationFrame = Instance.new("ScrollingFrame")
         local OkayBtn = Instance.new("TextButton")
         local OkayBtnCorner = Instance.new("UICorner")
         local OkayBtnTitle = Instance.new("TextLabel")
