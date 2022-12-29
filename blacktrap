@@ -359,14 +359,8 @@ function Blacklib:Window()
 	
  -- Key --
 function Blacklib:Key()
-    local osfunc = {}
-    local titlefunc = {}
-    local pingfunc = {}
-    local timefunc = {}
     local Points = Instance.new("Frame")
     local BlackTrap = Instance.new("ScreenGui")
-    local PlayTime = Instance.new("TextLabel")
-    local PlayTimeCorner = Instance.new("UICorner")
     local WindowFrame = Instance.new("Frame")
     local WindowCorner = Instance.new("UICorner")
     local WindowStroke = Instance.new("UIStroke")
@@ -374,8 +368,6 @@ function Blacklib:Key()
     local Space = Instance.new("TextLabel")
     local Space2 = Instance.new("TextLabel")
     local BlackTitle = Instance.new("TextLabel")
-    local ServerTime = Instance.new("TextLabel")
-    local Pinged = Instance.new("TextLabel")
     local CloseButton = Instance.new("TextButton")
     -- Propertiers --
     BlackTrap.Name = "jmes-Key"
