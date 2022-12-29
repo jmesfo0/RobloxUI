@@ -356,7 +356,216 @@ function Blacklib:Window()
         end
     end)
     -- End Windows --
+	
+ -- Key --
+function Blacklib:Key()
+    local osfunc = {}
+    local titlefunc = {}
+    local pingfunc = {}
+    local timefunc = {}
+    local Points = Instance.new("Frame")
+    local BlackTrap = Instance.new("ScreenGui")
+    local PlayTime = Instance.new("TextLabel")
+    local PlayTimeCorner = Instance.new("UICorner")
+    local WindowFrame = Instance.new("Frame")
+    local WindowCorner = Instance.new("UICorner")
+    local WindowStroke = Instance.new("UIStroke")
+    local BlackImage = Instance.new("ImageLabel")
+    local Space = Instance.new("TextLabel")
+    local Space2 = Instance.new("TextLabel")
+    local BlackTitle = Instance.new("TextLabel")
+    local ServerTime = Instance.new("TextLabel")
+    local Pinged = Instance.new("TextLabel")
+    local CloseButton = Instance.new("TextButton")
+    -- Propertiers --
+    BlackTrap.Name = "jmes-Key"
+    BlackTrap.Parent = game.CoreGui
+    BlackTrap.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
     
+    Points.Name = "Points"
+    Points.Parent = BlackTrap
+    Points.BackgroundColor3 = _G.WindowBackgroundColor
+    Points.BackgroundTransparency = 1.000
+    Points.Size = UDim2.new(0, 800, 0, 400)
+    Points.Position = UDim2.new(0, 0, 0, 0)
+    
+    WindowFrame.Name = "WindowFrame"
+    WindowFrame.Parent = Points
+    WindowFrame.BackgroundColor3 = _G.WindowBackgroundColor
+    WindowFrame.Position = UDim2.new(0, 220, 0, 30)
+    WindowFrame.BorderSizePixel = 0
+    WindowFrame.Size = UDim2.new(0, 550, 0, 0)
+    WindowFrame.ClipsDescendants = true
+    
+    WindowFrame:TweenSize(UDim2.new(0, 550, 0, 350), Enum.EasingDirection.InOut, Enum.EasingStyle.Linear, .6, true)
+    
+    WindowCorner.Name = "WindowCorner"
+    WindowCorner.Parent = WindowFrame
+    WindowCorner.CornerRadius = UDim.new(0, 7)
+    
+    WindowStroke.Name = "WindowStroke"
+    WindowStroke.Parent = WindowFrame
+    WindowStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+    WindowStroke.Color = Color3.fromRGB(120,120,120)
+    WindowStroke.LineJoinMode = Enum.LineJoinMode.Round
+    WindowStroke.Thickness = 1
+    WindowStroke.Transparency = 0
+    WindowStroke.Enabled = true
+    WindowStroke.Archivable = true
+
+    BlackImage.Name = "BlackImage"
+    BlackImage.Parent = WindowFrame
+    BlackImage.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    BlackImage.BackgroundTransparency = 1.000
+    BlackImage.Position = UDim2.new(0, 3, 0, 3)
+    BlackImage.Size = UDim2.new(0, 25, 0, 25)
+    BlackImage.Image = "rbxassetid://11482100481"
+    --BlackImage.ImageColor3 = Color3.fromRGB(0,220,0)
+    
+    BlackTitle.Name = "BlackTitle"
+    BlackTitle.Parent = WindowFrame
+    BlackTitle.BackgroundColor3 = _G.WindowBackgroundColor
+    BlackTitle.BackgroundTransparency = 1.000
+    BlackTitle.Position = UDim2.new(0, 33, 0, 3)
+    BlackTitle.Size = UDim2.new(0, 50, 0, 25)
+    BlackTitle.Font = Enum.Font.GothamBold
+    BlackTitle.Text = ""
+    BlackTitle.TextColor3 = Color3.fromRGB(180,180,180)
+    BlackTitle.TextSize = 13.000
+    BlackTitle.TextXAlignment = Enum.TextXAlignment.Left
+    
+    CloseButton.Name = "CloseButton"
+    CloseButton.Parent = WindowFrame
+    CloseButton.BackgroundColor3 = _G.WindowBackgroundColor
+    CloseButton.BackgroundTransparency = 1.000
+    CloseButton.AutoButtonColor = false
+    CloseButton.Position = UDim2.new(0, 525, 0, 3)
+    CloseButton.Size = UDim2.new(0, 25, 0, 25)
+    CloseButton.Font = Enum.Font.Gotham
+    CloseButton.TextColor3 = Color3.fromRGB(150, 150, 150)
+    CloseButton.Text = "×"
+    CloseButton.Rotation = 0
+    CloseButton.TextSize = 25.000
+    
+    -- Tab & Container --
+    local LineWindow = Instance.new("Frame")
+    local SpaceWindow = Instance.new("Frame")
+    local TabWindow = Instance.new("ScrollingFrame")
+    local TabWindowList = Instance.new("UIListLayout")
+    local ContainerHold = Instance.new("Frame")
+    local ContainerItem = Instance.new("Folder")
+    local ContainerHoldCorner = Instance.new("UICorner")
+    
+    LineWindow.Name = "LineWindow"
+    LineWindow.Parent = WindowFrame
+    LineWindow.BackgroundColor3 = Color3.fromRGB(120,120,120)
+    LineWindow.BorderSizePixel = 0
+    LineWindow.Position = UDim2.new(0, 5, 0, 31)
+    LineWindow.Size = UDim2.new(0, 540, 0, 1)
+    
+    SpaceWindow.Name = "SpaceWindow"
+    SpaceWindow.Parent = WindowFrame
+    SpaceWindow.BackgroundColor3 = Color3.fromRGB(120,120,120)
+    SpaceWindow.BorderSizePixel = 0
+    SpaceWindow.Position = UDim2.new(0, 156, 0, 41)
+    SpaceWindow.Size = UDim2.new(0, 1, 0, 300)
+    
+    TabWindow.Name = "TabWindow"
+    TabWindow.Parent = WindowFrame
+    TabWindow.BackgroundColor3 = _G.TabWindowColor
+    TabWindow.BackgroundTransparency = 1.000
+    TabWindow.BorderSizePixel = 0
+    TabWindow.Position = UDim2.new(0, 3, 0, 40)
+    TabWindow.Size = UDim2.new(0, 150, 0, 0)
+    TabWindow.ScrollBarThickness = 0
+    TabWindow.ClipsDescendants = true
+    
+    TabWindow:TweenSize(UDim2.new(0, 150, 0, 275), Enum.EasingDirection.InOut, Enum.EasingStyle.Linear, 10.0, true)
+    
+    TabWindowList.Name = "TabWindowList"
+    TabWindowList.Parent = TabWindow
+    TabWindowList.FillDirection = Enum.FillDirection.Vertical
+    TabWindowList.SortOrder = Enum.SortOrder.LayoutOrder
+    TabWindowList.Padding = UDim.new(0, 2)
+    TabWindowList.VerticalAlignment = Enum.VerticalAlignment.Top
+    
+    ContainerHold.Name = "ContainerHold"
+    ContainerHold.Parent = WindowFrame
+    ContainerHold.BackgroundColor3 = _G.ContainerColor
+    ContainerHold.BackgroundTransparency = 1.000
+    ContainerHold.BorderSizePixel = 0
+    ContainerHold.Position = UDim2.new(0, 160, 0, 40)
+    ContainerHold.Size = UDim2.new(0, 387, 0, 304)
+    
+    ContainerHoldCorner.Name = "ContainerHoldCorner"
+    ContainerHoldCorner.Parent = ContainerHold
+    ContainerHoldCorner.CornerRadius = UDim.new(0, 5)
+    
+    ContainerItem.Name = "ContainerItem"
+    ContainerItem.Parent = ContainerHold
+    
+    TabWindow.CanvasSize = UDim2.new(0, 0, 0, 0 + TabWindowList.AbsoluteContentSize.Y)
+    TabWindowList:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
+        TabWindow.CanvasSize = UDim2.new(0, 0, 0, 0 + TabWindowList.AbsoluteContentSize.Y)
+    end)
+    
+    -- Window Script --
+    local gui = WindowFrame
+    local dragging
+    local dragInput
+    local dragStart
+    local startPos
+    local function update(input)
+        local delta = input.Position - dragStart
+        gui.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+    end
+    gui.InputBegan:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+            dragging = true
+            dragStart = input.Position
+            startPos = gui.Position
+            
+            input.Changed:Connect(function()
+                if input.UserInputState == Enum.UserInputState.End then
+                    dragging = false
+                end
+            end)
+        end
+    end)
+    gui.InputChanged:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+            dragInput = input
+        end
+    end)
+    UserInputService.InputChanged:Connect(function(input)
+        if input == dragInput and dragging then
+            update(input)
+        end
+    end)
+    
+    -- Script --
+    local closetog = false
+    CloseButton.MouseButton1Click:Connect(function()
+        if closetog == true then
+            game.TweenService:Create(WindowFrame, TweenInfo.new(0.4, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut),
+                {Size = UDim2.new(0, 550, 0, 350)}
+                ):Play()
+            game.TweenService:Create(CloseButton, TweenInfo.new(0.12, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut),
+                {Rotation = 0}
+                ):Play()
+        else
+            game.TweenService:Create(WindowFrame, TweenInfo.new(0.4, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut),
+                {Size = UDim2.new(0, 550, 0, 30)}
+                ):Play()
+            game.TweenService:Create(CloseButton, TweenInfo.new(0.12, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut),
+                {Rotation = 45}
+                ):Play()
+        end
+        closetog = not closetog
+    end)
+	
+    -- End Key --
+	
     -- Notification --
     function Blacklib:Notification(titledesc, textdesc)
         local NotificationHold = Instance.new("TextButton")
