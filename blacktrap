@@ -376,7 +376,7 @@ function Blacklib:Window()
         NotificationHold.BackgroundColor3 = _G.WindowBackgroundColor
         NotificationHold.BackgroundTransparency = 0.4
         NotificationHold.BorderSizePixel = 0
-        NotificationHold.Size = UDim2.new(0, 550, 0, 350)
+        NotificationHold.Size = UDim2.new(0, 550, 0, 550)
         NotificationHold.AutoButtonColor = false
         NotificationHold.Font = Enum.Font.SourceSans
         NotificationHold.Text = ""
@@ -393,9 +393,9 @@ function Blacklib:Window()
         NotificationFrame.BorderColor3 = _G.SectionColor
         NotificationFrame.BorderSizePixel = 0
         NotificationFrame.ClipsDescendants = true
-        NotificationFrame.Position = UDim2.new(0, 275, 0, 175)
-		--NotificationFrame.ScrollBarThickness = 1
-		NotificationFrame.Size = UDim2.new(0, 150, 0, 0)
+        NotificationFrame.Position = UDim2.new(0, 300, 0, 450)
+		NotificationFrame.ScrollBarThickness = 0
+        NotificationFrame.Size = UDim2.new(0, 0, 0, 0)		
  
         NotificationFrame:TweenSize(UDim2.new(0, 400, 0, 250), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .6, true)
         
@@ -464,7 +464,7 @@ function Blacklib:Window()
         NotificationDesc.BackgroundColor3 = _G.SectionColor
         NotificationDesc.BackgroundTransparency = 1.000
         NotificationDesc.Position = UDim2.new(0, 10, 0, 70)
-        NotificationDesc.Size = UDim2.new(0, 380, 0, 0)
+        NotificationDesc.Size = UDim2.new(0, 380, 0, 100)
         NotificationDesc.Font = Enum.Font.Code
         NotificationDesc.Text = textdesc
         NotificationDesc.TextColor3 = Color3.fromRGB(180,180,180)
