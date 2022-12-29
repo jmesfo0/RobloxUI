@@ -463,7 +463,7 @@ function Blacklib:Window()
         NotificationDesc.Parent = NotificationFrame
         NotificationDesc.BackgroundColor3 = _G.SectionColor
         NotificationDesc.BackgroundTransparency = 1.000
-        NotificationDesc.Position = UDim2.new(0, 10, 0, 190)
+        NotificationDesc.Position = UDim2.new(0, 10, 0, 110)
         NotificationDesc.Size = UDim2.new(0, 380, 0, 1000)
         NotificationDesc.Font = Enum.Font.Code
         NotificationDesc.Text = textdesc
