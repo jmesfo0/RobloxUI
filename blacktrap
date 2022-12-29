@@ -33,7 +33,7 @@ _G.SectionTextColor = Color3.fromRGB(150, 150, 150)
 _G.SectionOn = Color3.fromRGB(150, 150, 150)
 
 -- Windows --
-function Blacklib:Window()
+function Blacklib:Window(Name)
     local osfunc = {}
     local titlefunc = {}
     local pingfunc = {}
@@ -53,7 +53,7 @@ function Blacklib:Window()
     local Pinged = Instance.new("TextLabel")
     local CloseButton = Instance.new("TextButton")
     -- Propertiers --
-    BlackTrap.Name = "BlackTrap"
+    BlackTrap.Name = Name
     BlackTrap.Parent = game.CoreGui
     BlackTrap.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
     
