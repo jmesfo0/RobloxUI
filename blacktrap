@@ -1163,7 +1163,7 @@ function Blacklib:Window()
                         {ImageColor3 = Color3.fromRGB(180,180,180)}
                         ):Play()
                 end
-		
+                
                 function dropfunc:Add(newadd)
                     newadd = newadd or {}
                     ItemCount = ItemCount + 1
