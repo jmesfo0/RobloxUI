@@ -1164,20 +1164,6 @@ function Blacklib:Window()
                         ):Play()
                 end
 		
-                -- Dropdown Script (by jmes) --
-                function dropfunc:Refresh(newtable)
-                    for _,v  in next, DropItemScroll:GetChildren() do
-                        if v:IsA("TextButton") then
-                            v:Destroy()
-                            FrameSize = 0
-                            ItemCount = 0
-                        end
-                    end		    
-                    TextButton.Text = "Select"
-		    list = newtable
-                end
-                return labelfunc
-                
                 function dropfunc:Add(newadd)
                     newadd = newadd or {}
                     ItemCount = ItemCount + 1
