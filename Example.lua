@@ -12,6 +12,10 @@ local Main_Home = Win:Tab("• Home", "rbxassetid://8825667942")
 --//Add Sections
 local Home = Main_Home:NewSection("This is a section")
 
+--//Timer and Client FPS Label
+Time = Home:Label("Server Time")
+Client = Home:Label("User")
+
 --//Add Label
 Home:Label("This is a label")
 
@@ -42,14 +46,14 @@ Home:TextBox("This is a textbox", "", function(Value)
 	print('Text Box Value:', Value)
 end)
 
---//Add Slider
-Home:Slider("This is a slider", 0, 10, 1, function(Value)
-	print('Slider Value:', Value)
-end)
-
 --//Destroy Gui Button
 Home:Button("Destroy Gui", function()
 	game:GetService("CoreGui"):FindFirstChild("BlackTrap"):Destroy()
+end)
+
+--//Add Slider
+Home:Slider("This is a slider", 0, 10, 1, function(Value)
+	print('Slider Value:', Value)
 end)
 
 --//Keybind
@@ -68,3 +72,31 @@ function Minimize()
 		game:GetService("CoreGui").BlackTrap.Points.WindowFrame.Visible = true
 	end
 end
+
+--//Update Timer
+function UpdateTime()
+    local GameTime = math.floor(workspace.DistributedGameTime+0.5)
+    local Hour = math.floor(GameTime/(60^2))%24
+    local Minute = math.floor(GameTime/(60^1))%60
+    local Second = math.floor(GameTime/(60^0))%60
+    Time:Refresh("Hour : "..Hour.." Minute : "..Minute.." Second : "..Second)
+end
+
+task.spawn(function()
+    while true do task.wait(.3)
+        UpdateTime()
+    end
+end)
+
+--//Update FPS and Ping
+function UpdateClient()
+    local Ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
+    local Fps = workspace:GetRealPhysicsFPS()
+    Client:Refresh("Fps : "..Fps.." Ping : "..Ping)
+end
+
+task.spawn(function()
+    while true do task.wait(.3)
+        UpdateClient()
+    end
+end)
