@@ -42,6 +42,11 @@ Home:TextBox("This is a textbox", "", function(Value)
 	print('Text Box Value:', Value)
 end)
 
+--//Add Slider
+Home:Slider("This is a slider", 0, 10, 1, function(Value)
+	print('Slider Value:', Value)
+end)
+
 --//Destroy Gui Button
 Home:Button("Destroy Gui", function()
 	game:GetService("CoreGui"):FindFirstChild("BlackTrap"):Destroy()
