@@ -42,6 +42,24 @@ Home:TextBox("This is a textbox", "", function(Value)
 	print('Text Box Value:', Value)
 end)
 
+--//Destroy Gui Button
 Home:Button("Destroy Gui", function()
 	game:GetService("CoreGui"):FindFirstChild("BlackTrap"):Destroy()
 end)
+
+--//Keybind
+Home:Bind("Set key to hide/show menu", Enum.KeyCode.End, function()
+	Minimize()
+end)
+
+--//Keybind Function
+local menutoggle = false
+function Minimize()
+	if menutoggle == false then
+		menutoggle = true
+		game:GetService("CoreGui").BlackTrap.Points.WindowFrame.Visible = false
+	else
+		menutoggle = false
+		game:GetService("CoreGui").BlackTrap.Points.WindowFrame.Visible = true
+	end
+end
