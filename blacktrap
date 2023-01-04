@@ -1724,7 +1724,7 @@ function Blacklib:Window()
             -- End Keybind --
 	    
             -- Paragraph --
-            function ItemHand:Paragraph(textlabel)
+            function ItemHand:CreateParagraph(textlabel)
                 local labelfunc = {}
                 local Frame = Instance.new("ScrollingFrame")
                 local TextButton = Instance.new("TextButton")
@@ -1748,7 +1748,7 @@ function Blacklib:Window()
                 TextButton.BackgroundTransparency = 1
                 TextButton.AutoButtonColor = false
                 TextButton.Position = UDim2.new(0, 3, 0, 0)
-                TextButton.Size = UDim2.new(0, 381, 0, 110)
+                TextButton.Size = UDim2.new(0, 381, 0, 70)
                 TextButton.Font = Enum.Font.Code
                 TextButton.Text = textlabel.Title.."\n"..textlabel.Content
 
