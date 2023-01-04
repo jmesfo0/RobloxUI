@@ -1737,10 +1737,10 @@ function Blacklib:Window()
                 Frame.BorderSizePixel = 0
 		Frame.BorderColor3 = Color3.fromRGB(255,255,255)
 		Frame.BorderMode = "Outline"
-                Frame.Size = UDim2.new(0, 387, 0, 75)
+                Frame.Size = UDim2.new(0, 387, 0, 110)
 		Frame.Position = UDim2.new(0, 3, 0, 0)
 		Frame.ScrollBarThickness = 0
-		Frame.ClipsDescendants = false
+		Frame.ClipsDescendants = true
                 
                 TextButton.Name = "TextButton"
                 TextButton.Parent = Frame
@@ -1748,7 +1748,7 @@ function Blacklib:Window()
                 TextButton.BackgroundTransparency = 1
                 TextButton.AutoButtonColor = false
                 TextButton.Position = UDim2.new(0, 3, 0, 0)
-                TextButton.Size = UDim2.new(0, 381, 0, 75)
+                TextButton.Size = UDim2.new(0, 381, 0, 110)
                 TextButton.Font = Enum.Font.Code
                 TextButton.Text = textlabel.Title.."\n"..textlabel.Content
 
