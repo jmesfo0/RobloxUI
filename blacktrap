@@ -1722,7 +1722,48 @@ function Blacklib:Window()
 				
             end
             -- End Keybind --
-        
+	    
+            -- Paragraph --
+            function ItemHand:Paragraph(textlabel)
+                local labelfunc = {}
+                local Frame = Instance.new("ScrollingFrame")
+                local TextButton = Instance.new("TextButton")
+                
+                -- Prop --
+                Frame.Name = textlabel.Title or "Frame"
+                Frame.Parent = sectionFrame
+                Frame.BackgroundColor3 = _G.BackgroundItemColor
+                Frame.BackgroundTransparency = 0
+                Frame.BorderSizePixel = 0
+		Frame.BorderColor3 = Color3.fromRGB(255,255,255)
+		Frame.BorderMode = "Outline"
+                Frame.Size = UDim2.new(0, 381, 0, 110)
+		Frame.Position = UDim2.new(0, 3, 0, 0)
+		Frame.ScrollBarThickness = 0
+		Frame.ClipsDescendants = false
+                
+                TextButton.Name = "TextButton"
+                TextButton.Parent = Frame
+                TextButton.BackgroundColor3 = _G.SectionColor
+                TextButton.BackgroundTransparency = 1
+                TextButton.AutoButtonColor = false
+                TextButton.Position = UDim2.new(0, 3, 0, 0)
+                TextButton.Size = UDim2.new(0, 381, 0, 110)
+                TextButton.Font = Enum.Font.Code
+                TextButton.Text = textlabel.Title.."\n"..textlabel.Content
+
+                TextButton.TextColor3 = Color3.fromRGB(255,255,255)
+                TextButton.TextSize = 12.000
+                TextButton.TextXAlignment = Enum.TextXAlignment.Left
+		TextButton.TextYAlignment = Enum.TextYAlignment.Top
+                
+                -- Label Script --
+                function labelfunc:Set(NewParagraphSettings)
+                    TextButton.Text = NewParagraphSettings.Title.."\n"..NewParagraphSettings.Content
+                end
+                return labelfunc
+            end
+	    
             -- Label --
             function ItemHand:Label(textlabel)
                 local labelfunc = {}
