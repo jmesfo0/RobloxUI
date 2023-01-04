@@ -1767,7 +1767,6 @@ function Blacklib:Window()
 		Frame.Position = UDim2.new(0, 3, 0, 0)
 		Frame.ScrollBarThickness = 0
 		Frame.ClipsDescendants = true
-		Frame.CanvasSize = UDim2.new(0, 0, 0.2, 0)
 
                 TextButton.Name = "TextButton"
                 TextButton.Parent = Frame
@@ -1784,6 +1783,11 @@ function Blacklib:Window()
                 TextButton.TextXAlignment = Enum.TextXAlignment.Left
 		TextButton.TextYAlignment = Enum.TextYAlignment.Top
 		TextButton.TextScaled = false
+		
+		Frame.CanvasSize = UDim2.new(0, 0, 0, 0 + TextButton.AbsoluteContentSize.Y)
+	    	TextButton:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
+			Frame.CanvasSize = UDim2.new(0, 0, 0, 0 + TextButton.AbsoluteContentSize.Y)
+		end)
 
                 -- Label Script --
                 function labelfunc:Set(NewParagraphSettings)
