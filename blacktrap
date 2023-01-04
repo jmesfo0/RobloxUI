@@ -1741,6 +1741,7 @@ function Blacklib:Window()
 		Frame.Position = UDim2.new(0, 3, 0, 0)
 		Frame.ScrollBarThickness = 0
 		Frame.ClipsDescendants = true
+		Frame.CanvasSize = UDim2.new(0, 0, 0.55, 0)
                 
                 TextButton.Name = "TextButton"
                 TextButton.Parent = Frame
