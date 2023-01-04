@@ -1784,9 +1784,9 @@ function Blacklib:Window()
 		TextButton.TextYAlignment = Enum.TextYAlignment.Top
 		TextButton.TextScaled = false
 		
-		Frame.CanvasSize = UDim2.new(0, 0, 0, 0 + TextButton.AbsoluteContentSize.Y)
-	    	TextButton:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
-			Frame.CanvasSize = UDim2.new(0, 0, 0, 0 + TextButton.AbsoluteContentSize.Y)
+		Frame.CanvasSize = UDim2.new(0, 0, 0, 0 + Frame.AbsoluteContentSize.Y)
+	    	Frame:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
+			Frame.CanvasSize = UDim2.new(0, 0, 0, 0 + Frame.AbsoluteContentSize.Y)
 		end)
 
                 -- Label Script --
