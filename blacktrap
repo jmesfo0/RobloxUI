@@ -1725,20 +1725,23 @@ function Blacklib:Window()
 	    
             -- Paragraph --
             function ItemHand:CreateParagraph(textlabel)
-                local labelfunc = {}
+                local paragraphfunc = {}
 				
 		local Title = Instance.new("Frame")
                 local TitleText = Instance.new("TextButton")
-                
+                local Content = Instance.new("ScrollingFrame")
+		local ContentList = Instance.new("UIListLayout")   
+                local ContentText = Instance.new("TextButton")   
+				
                 -- Prop --
-                Title.Name = textlabel.Title or "Frame"
+                Title.Name = textlabel.Title or "Title"
                 Title.Parent = sectionFrame
                 Title.BackgroundColor3 = _G.BackgroundItemColor
                 Title.BackgroundTransparency = 1
                 Title.BorderSizePixel = 0
                 Title.Size = UDim2.new(0, 387, 0, 15)
                 
-                TitleText.Name = "TextButton"
+                TitleText.Name = "TitleText"
                 TitleText.Parent = Title
                 TitleText.BackgroundColor3 = _G.SectionColor
                 TitleText.BackgroundTransparency = 1.000
@@ -1751,45 +1754,51 @@ function Blacklib:Window()
                 TitleText.TextSize = 12.000
                 TitleText.TextXAlignment = Enum.TextXAlignment.Left
 				
-				
-                local Frame = Instance.new("ScrollingFrame")
-                local TextButton = Instance.new("TextButton")
-                
-                -- Prop --
-                Frame.Name = textlabel.Title or "Frame"
-                Frame.Parent = sectionFrame
-                Frame.BackgroundColor3 = _G.BackgroundItemColor
-                Frame.BackgroundTransparency = 0
-                Frame.BorderSizePixel = 0
-		Frame.BorderColor3 = Color3.fromRGB(255,255,255)
-		Frame.BorderMode = "Outline"
-                Frame.Size = UDim2.new(0, 381, 0, 110)
-		Frame.Position = UDim2.new(0, 3, 0, 0)
-		Frame.ScrollBarThickness = 0
-		Frame.ClipsDescendants = true
+                Content.Name = textlabel.Content or "Content"
+                Content.Parent = sectionFrame
+                Content.BackgroundColor3 = _G.BackgroundItemColor
+                Content.BackgroundTransparency = 0
+                Content.BorderSizePixel = 0
+		Content.BorderColor3 = Color3.fromRGB(255,255,255)
+                Content.Size = UDim2.new(0, 381, 0, 110)
+		Content.Position = UDim2.new(0, 3, 0, 0)
+		Content.ScrollBarThickness = 0
+		Content.ClipsDescendants = true
 
-                TextButton.Name = "TextButton"
-                TextButton.Parent = Frame
-                TextButton.BackgroundColor3 = _G.SectionColor
-                TextButton.BackgroundTransparency = 1
-                TextButton.AutoButtonColor = false
-                TextButton.Position = UDim2.new(0, 3, 0, 0)
-                TextButton.Size = UDim2.new(0, 381, 0, 110)
-                TextButton.Font = Enum.Font.Code
-                TextButton.Text = textlabel.Content
+		ContentList.Name = "ContentList"
+		ContentList.Parent = Content
+		ContentList.FillDirection = Enum.FillDirection.Vertical
+		ContentList.SortOrder = Enum.SortOrder.LayoutOrder
+		ContentList.Padding = UDim.new(0, 2)
+		ContentList.VerticalAlignment = Enum.VerticalAlignment.Top				
 
-                TextButton.TextColor3 = Color3.fromRGB(255,255,255)
-                TextButton.TextSize = 12.000
-                TextButton.TextXAlignment = Enum.TextXAlignment.Left
-		TextButton.TextYAlignment = Enum.TextYAlignment.Top
-		TextButton.TextScaled = false
+                ContentText.Name = "ContentText"
+                ContentText.Parent = Content
+                ContentText.BackgroundColor3 = _G.SectionColor
+                ContentText.BackgroundTransparency = 1
+                ContentText.AutoButtonColor = false
+                ContentText.Position = UDim2.new(0, 3, 0, 0)
+                ContentText.Size = UDim2.new(0, 381, 0, 110)
+                ContentText.Font = Enum.Font.Code
+                ContentText.Text = textlabel.Content
 
-                -- Label Script --
-                function labelfunc:Set(NewParagraphSettings)
+                ContentText.TextColor3 = Color3.fromRGB(255,255,255)
+                ContentText.TextSize = 12.000
+                ContentText.TextXAlignment = Enum.TextXAlignment.Left
+		ContentText.TextYAlignment = Enum.TextYAlignment.Top
+		ContentText.TextScaled = false
+
+		Content.CanvasSize = UDim2.new(0, 0, 0.2, ContentList.AbsoluteContentSize.Y)
+		ContentList:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
+			Content.CanvasSize = UDim2.new(0, 0, 0.2, ContentList.AbsoluteContentSize.Y)
+		end)
+
+                -- Paragraph Script --
+                function paragraphfunc:Set(NewParagraphSettings)
 			TitleText.Text = NewParagraphSettings.Title
-			TextButton.Text = NewParagraphSettings.Content
+			ContentText.Text = NewParagraphSettings.Content
                 end
-                return labelfunc
+                return paragraphfunc
             end
 	    
             -- Label --
