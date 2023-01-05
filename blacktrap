@@ -1772,7 +1772,7 @@ function Blacklib:Window(WindowName)
 				ContentText.AutoButtonColor = false
 				ContentText.Position = UDim2.new(0, 3, 0, 0)
 				ContentText.Font = Enum.Font.Code
-				ContentText.RichText = textlabel.Content
+				ContentText.Text = textlabel.Content
 
 				ContentText.TextColor3 = Color3.fromRGB(255,255,255)
 				ContentText.TextSize = 12.000
