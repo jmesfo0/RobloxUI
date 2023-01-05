@@ -1781,12 +1781,12 @@ function Blacklib:Window(WindowName)
 				ContentText.TextScaled = false
 				ContentText.TextWrapped = true
 
-				Content.Size = UDim2.new(0, 381, 0, ContentText.TextBounds.X + 5)
-				ContentText.Size = UDim2.new(0, 381, 0, ContentText.TextBounds.X + 5)
+				Content.Size = UDim2.new(0, 381, 0, ContentText.TextBounds.Y + 5)
+				ContentText.Size = UDim2.new(0, 381, 0, ContentText.TextBounds.Y + 5)
 
 				ContentText:GetPropertyChangedSignal("Text"):Connect(function()
-					Content.Size = UDim2.new(0, 381, 0, ContentText.TextBounds.X + 5)
-					ContentText.Size = UDim2.new(0, 381, 0, ContentText.TextBounds.X + 5)
+					Content.Size = UDim2.new(0, 381, 0, ContentText.TextBounds.Y + 5)
+					ContentText.Size = UDim2.new(0, 381, 0, ContentText.TextBounds.Y + 5)
 				end)
 
 			-- Paragraph Script --
