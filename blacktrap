@@ -1724,78 +1724,80 @@ function Blacklib:Window(WindowName)
             end
             -- End Keybind --
 	    
-			-- Paragraph --
-			function ItemHand:CreateParagraph(textlabel)
-				local paragraphfunc = {}
+		-- Paragraph --
+		function ItemHand:CreateParagraph(textlabel)
+			local paragraphfunc = {}
 
-				local Title = Instance.new("Frame")
-				local TitleText = Instance.new("TextButton")
-				local Content = Instance.new("Frame")
-				local ContentText = Instance.new("TextButton")   
+			local Title = Instance.new("Frame")
+			local TitleText = Instance.new("TextButton")
+			local Content = Instance.new("ScrollingFrame")
+			local ContentText = Instance.new("TextButton")   
 
-				-- Prop --
-				Title.Name = textlabel.Title or "Title"
-				Title.Parent = sectionFrame
-				Title.BackgroundColor3 = _G.BackgroundItemColor
-				Title.BackgroundTransparency = 1
-				Title.BorderSizePixel = 0
-				Title.Size = UDim2.new(0, 387, 0, 15)
+			-- Prop --
+			Title.Name = "Title"
+			Title.Parent = sectionFrame
+			Title.BackgroundColor3 = _G.BackgroundItemColor
+			Title.BackgroundTransparency = 1
+			Title.BorderSizePixel = 0
+			Title.Size = UDim2.new(0, 387, 0, 15)
 
-				TitleText.Name = "TitleText"
-				TitleText.Parent = Title
-				TitleText.BackgroundColor3 = _G.SectionColor
-				TitleText.BackgroundTransparency = 1.000
-				TitleText.AutoButtonColor = false
-				TitleText.Position = UDim2.new(0, 3, 0, 0)
-				TitleText.Size = UDim2.new(0, 381, 0, 15)
-				TitleText.Font = Enum.Font.Code
-				TitleText.Text = textlabel.Title or ""
-				TitleText.TextColor3 = Color3.fromRGB(255,255,255)
-				TitleText.TextSize = 12.000
-				TitleText.TextXAlignment = Enum.TextXAlignment.Left
+			TitleText.Name = "TitleText"
+			TitleText.Parent = Title
+			TitleText.BackgroundColor3 = _G.SectionColor
+			TitleText.BackgroundTransparency = 1.000
+			TitleText.AutoButtonColor = false
+			TitleText.Position = UDim2.new(0, 3, 0, 0)
+			TitleText.Size = UDim2.new(0, 381, 0, 15)
+			TitleText.Font = Enum.Font.Code
+			TitleText.Text = textlabel.Title or ""
+			TitleText.TextColor3 = Color3.fromRGB(255,255,255)
+			TitleText.TextSize = 12.000
+			TitleText.TextXAlignment = Enum.TextXAlignment.Left
 
 
-				Content.Name = textlabel.Content or "Content"
-				Content.Parent = sectionFrame
-				Content.BackgroundColor3 = _G.BackgroundItemColor
-				Content.BackgroundTransparency = 0
-				Content.BorderSizePixel = 0
-				Content.BorderColor3 = Color3.fromRGB(255,255,255)
-				Content.Position = UDim2.new(0, 3, 0, 0)
-				--Content.ScrollBarThickness = 0
-				Content.ClipsDescendants = true			
+			Content.Name = "Content"
+			Content.Parent = sectionFrame
+			Content.BackgroundColor3 = _G.BackgroundItemColor
+			Content.BackgroundTransparency = 0
+			Content.BorderSizePixel = 0
+			Content.BorderColor3 = Color3.fromRGB(255,255,255)
+			Content.Position = UDim2.new(0, 3, 0, 0)
+			Content.Size = UDim2.new(0, 381, 0, 110)
+			--Content.ScrollBarThickness = 0
+			Content.ClipsDescendants = true			
 
-				ContentText.Name = "ContentText"
-				ContentText.Parent = Content
-				ContentText.BackgroundColor3 = _G.SectionColor
-				ContentText.BackgroundTransparency = 1
-				ContentText.AutoButtonColor = false
-				ContentText.Position = UDim2.new(0, 3, 0, 0)
-				ContentText.Font = Enum.Font.Code
-				ContentText.Text = textlabel.Content
+			ContentText.Name = "ContentText"
+			ContentText.Parent = Content
+			ContentText.BackgroundColor3 = _G.SectionColor
+			ContentText.BackgroundTransparency = 1
+			ContentText.AutoButtonColor = false
+			ContentText.Position = UDim2.new(0, 3, 0, 0)
+			ContentText.Font = Enum.Font.Code
+			ContentText.Text = textlabel.Content
 
-				ContentText.TextColor3 = Color3.fromRGB(255,255,255)
-				ContentText.TextSize = 12.000
-				ContentText.TextXAlignment = Enum.TextXAlignment.Left
-				ContentText.TextYAlignment = Enum.TextYAlignment.Top
-				ContentText.TextScaled = false
-				ContentText.TextWrapped = true
+			ContentText.TextColor3 = Color3.fromRGB(255,255,255)
+			ContentText.TextSize = 12.000
+			ContentText.TextXAlignment = Enum.TextXAlignment.Left
+			ContentText.TextYAlignment = Enum.TextYAlignment.Top
+			ContentText.TextScaled = false
+			ContentText.TextWrapped = true
 
-				Content.Size = UDim2.new(0, 381, 0, ContentText.TextBounds.X)
-				ContentText.Size = UDim2.new(0, 381, 0, ContentText.TextBounds.X)
 
-				ContentText:GetPropertyChangedSignal("Text"):Connect(function()
-					Content.Size = UDim2.new(0, 381, 0, ContentText.TextBounds.X)
-					ContentText.Size = UDim2.new(0, 381, 0, ContentText.TextBounds.X)
-				end)
+			Content.CanvasSize = UDim2.new(0, 0, 0, string.len(ContentText.Text) - 180)
+			ContentText.Size = UDim2.new(0, 381, 0, string.len(ContentText.Text))
 
-			-- Paragraph Script --
-			function paragraphfunc:Set(NewParagraphSettings)
-				TitleText.Text = NewParagraphSettings.Title
-				ContentText.Text = NewParagraphSettings.Content
-			end
-			return paragraphfunc
-			end
+			ContentText:GetPropertyChangedSignal("Text"):Connect(function()
+				Content.CanvasSize = UDim2.new(0, 0, 0, string.len(ContentText.Text) - 180)
+				ContentText.Size = UDim2.new(0, 381, 0, string.len(ContentText.Text))
+			end)
+
+		-- Paragraph Script --
+		function paragraphfunc:Set(NewParagraphSettings)
+			TitleText.Text = NewParagraphSettings.Title
+			ContentText.Text = NewParagraphSettings.Content
+		end
+		return paragraphfunc
+		end
 	    
             -- Label --
             function ItemHand:Label(textlabel)
