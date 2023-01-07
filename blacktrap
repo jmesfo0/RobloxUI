@@ -791,8 +791,9 @@ function Blacklib:Window(WindowName)
             end
             -- End Button --
             
-            -- Toggled --
+            -- Toggle --
             function ItemHand:Toggle(TogInfo, default, callback)
+		local togglefunc = {}
                 local toggle = false
                 local CheckFrame = Instance.new("Frame")
                 local CheckFrame2 = Instance.new("Frame")
@@ -888,6 +889,21 @@ function Blacklib:Window(WindowName)
                     pcall(callback, toggle)
                 end
                 
+		function togglefunc:Set(toggle)
+		    if toggle == false then
+			game.TweenService:Create(ImageButton, TweenInfo.new(0.08, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut),
+			    {ImageColor3 = Color3.fromRGB(180,180,180)}
+			    ):Play()
+			ImageButton.ImageRectOffset = Vector2.new(4, 836)
+		    else
+			game.TweenService:Create(ImageButton, TweenInfo.new(0.08, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut),
+			    {ImageColor3 = Color3.fromRGB(180,180,180)}
+			    ):Play()
+			ImageButton.ImageRectOffset = Vector2.new(940, 784)
+		    end
+		    toggle = not toggle
+		    pcall(callback, toggle)
+			end
                 ImageButton.MouseButton1Click:Connect(function()
                     if toggle == false then
                         game.TweenService:Create(ImageButton, TweenInfo.new(0.08, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut),
@@ -903,6 +919,7 @@ function Blacklib:Window(WindowName)
                     toggle = not toggle
                     pcall(callback, toggle)
                 end)
+				return togglefunc
             end
             -- End Toggle --
             
