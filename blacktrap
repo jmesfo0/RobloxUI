@@ -1168,7 +1168,7 @@ function Blacklib:Window(WindowName)
                             ItemCount = 0
                         end
                     end
-                    DropTextList.Text = "Reset Succesfully..."
+                    DropTextList.Text = ""
                     DropToggled = false
                     DropSizeFrame:TweenSize(UDim2.new(0, 387, 0, 60), 'InOut', 'Linear', 0.08)
                     Frame:TweenSize(UDim2.new(0, 381, 0, 60), 'InOut', 'Linear', 0.08)
