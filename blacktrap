@@ -902,7 +902,9 @@ function Blacklib:Window(WindowName)
 			ImageButton.ImageRectOffset = Vector2.new(940, 784)
 		    end
 		    toggle = not toggle
-			end
+		end
+		return togglefunc
+		
                 ImageButton.MouseButton1Click:Connect(function()
                     if toggle == false then
                         game.TweenService:Create(ImageButton, TweenInfo.new(0.08, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut),
@@ -918,7 +920,7 @@ function Blacklib:Window(WindowName)
                     toggle = not toggle
                     pcall(callback, toggle)
                 end)
-				return togglefunc
+		
             end
             -- End Toggle --
             
