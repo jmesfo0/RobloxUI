@@ -902,7 +902,6 @@ function Blacklib:Window(WindowName)
 			ImageButton.ImageRectOffset = Vector2.new(940, 784)
 		    end
 		    toggle = not toggle
-		    pcall(callback, toggle)
 			end
                 ImageButton.MouseButton1Click:Connect(function()
                     if toggle == false then
