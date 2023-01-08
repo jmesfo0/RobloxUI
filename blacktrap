@@ -903,7 +903,7 @@ function Blacklib:Window(WindowName)
 		    end
 		    toggle = not toggle
 		end
-		return togglefunc
+		
 		
                 ImageButton.MouseButton1Click:Connect(function()
                     if toggle == false then
@@ -920,7 +920,7 @@ function Blacklib:Window(WindowName)
                     toggle = not toggle
                     pcall(callback, toggle)
                 end)
-		
+		return togglefunc
             end
             -- End Toggle --
             
