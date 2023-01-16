@@ -165,7 +165,7 @@ local SaveManager = {} do
 		local section = tab:newSection('Configuration', false)
 
 		section:addDropdown('Config list', "", self:RefreshConfigList(), function() end)
-		section:addTextBox('Config name', "", "" function() end)
+		section:addTextBox('Config name', "", "", function() end)
 
 		--section:AddDivider()
 
