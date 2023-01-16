@@ -1,7 +1,7 @@
 --// BlackTrap UI Example by jmes
 
 --//Load UI
-local Blacklib = loadstring(game:HttpGet("https://raw.githubusercontent.com/jmesfo0/RobloxUI/main/Blacktrap_Lib1.3"))()
+local Blacklib = loadstring(game:HttpGet("https://raw.githubusercontent.com/jmesfo0/RobloxUI/main/blacktrap"))()
 
 --//Initiate Window
 local Win = Blacklib:Window()
@@ -88,6 +88,12 @@ task.spawn(function()
     end
 end)
 
+TestTable = {}
+for i=1,100 do
+table.insert(TestTable, "["..i.."] Test Value")
+end
+local Paragraph = Home:CreateParagraph({Title = "Paragraph", Content = "\n"})
+Paragraph:Set({Title = "Paragraph", Content = table.concat(TestTable, "\n")})
 --//Update FPS and Ping
 function UpdateClient()
     local Ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
