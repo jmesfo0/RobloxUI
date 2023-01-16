@@ -77,7 +77,7 @@ end)
 
 --//Initialize TestTable
 for i=1,100 do
-	table.insert(Config.TestTable, "Test Value "..i)
+	table.insert(Config.TestTable, "This is a test entry for a list.")
 end
 
 
