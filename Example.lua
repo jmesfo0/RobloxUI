@@ -1,5 +1,15 @@
 --// BlackTrap UI Example by jmes
-
+local Config = {
+	Toggle = false;
+	TextBox = "Default Text";
+	Dropdown = "Default";
+	DeleteNumber = "";
+	Slider = 1;
+	Entry = "Text To Add";
+	Bind = Enum.KeyCode.End;
+	DropdownItems = {"Default"; "Select 1"; "Select 2"; "Select 3";},
+	TestTable = {}
+}
 --//Load UI
 local Blacklib = loadstring(game:HttpGet("https://raw.githubusercontent.com/jmesfo0/RobloxUI/main/blacktrap"))()
 
@@ -28,21 +38,24 @@ Home:Button("This is a button",function()
 end)
 
 --//Table for Dropdown
-local DropdownItems = {"Default"; "Select 1"; "Select 2"; "Select 3";}
+
 
 --//Add Dropdown
-Home:Dropdown("Select item", "Default", DropdownItems, function(Value)
+Home:Dropdown("Select item", Config.Dropdown, Config.DropdownItems, function(Value)
+	Config.Dropdown = Value
 	print('Selected:', Value)
 end)
 
 --//Add Toggle
-Home:Toggle("This is a toggle", false, function(Value)
+Home:Toggle("This is a toggle", Config.Toggle, function(Value)
+	Config.Toggle = Value
 	print('Toggle:', Value)
 end)
 
 --//Add Text Box
 Home:Label("Type and press ENTER to set value")
-Home:TextBox("This is a textbox", "", function(Value)
+Home:TextBox("This is a textbox", Config.TextBox, function(Value)
+	Config.TextBox = Value
 	print('Text Box Value:', Value)
 end)
 
@@ -52,14 +65,77 @@ Home:Button("Destroy Gui", function()
 end)
 
 --//Add Slider
-Home:Slider("This is a slider", 0, 10, 1, function(Value)
+Home:Slider("This is a slider", 0, 10, Config.Slider, function(Value)
+	Config.Slider = Value
 	print('Slider Value:', Value)
 end)
 
 --//Keybind
-Home:Bind("Set key to hide/show menu", Enum.KeyCode.End, function()
+Home:Bind("Set key to hide/show menu", Config.Bind, function()
 	Minimize()
 end)
+
+--//Initialize TestTable
+for i=1,100 do
+	table.insert(Config.TestTable, "Test Value "..i)
+end
+
+
+--//Add Paragraph
+local Paragraph = Home:CreateParagraph({Title = "Paragraph", Content = "\n"})
+
+--//Set SaveNumber
+local SaveNumber = #Config.TestTable + 1
+
+--//Set Paragraph
+if #Config.TestTable > 1 then
+    local TempTable = {}
+    for i,v in pairs(Config.TestTable) do
+        table.insert(TempTable, "["..i.."] "..v)
+    end
+	Paragraph:Set({Title = "Paragraph", Content = table.concat(TempTable, "\n")})
+end
+
+--// TextBox
+Home:TextBox("Enter Text", Config.Entry, function(Value)
+	Config.Entry = Value
+end)
+
+--// Button
+Home:Button("Add Entry", function()
+	Config.TestTable[SaveNumber] = Config.Entry
+	local TempTable = {}
+	for i,v in pairs(Config.TestTable) do
+		table.insert(TempTable, "["..i.."] "..v)
+	end
+	Paragraph:Set({Title = "Paragraph", Content = table.concat(TempTable, "\n")})
+	SaveNumber = #Config.TestTable + 1
+end)
+
+--// TextBox
+Home:TextBox("Entry # to Delete", Config.DeleteNumber, function(Value)
+	Config.DeleteNumber = Value
+end)
+
+--// Button
+Home:Button("Delete Entry", function()
+	local ListToReAdd = {}
+	for i,v in pairs(Config.TestTable) do
+		task.spawn(function()
+			if i ~= tonumber(Config.DeleteNumber) then
+				table.insert(ListToReAdd, v) 
+			end
+		end)
+	end
+	Config.TestTable = ListToReAdd
+	local TempTable = {}
+	for i,v in pairs(Config.TestTable) do
+		table.insert(TempTable, "["..i.."] "..v)
+	end
+	Paragraph:Set({Title = "Paragraph", Content = table.concat(TempTable, "\n")})
+	SaveNumber = #TempTable + 1
+end)
+
 
 --//Keybind Function
 local menutoggle = false
@@ -88,12 +164,6 @@ task.spawn(function()
     end
 end)
 
-TestTable = {}
-for i=1,100 do
-table.insert(TestTable, "["..i.."] Test Value")
-end
-local Paragraph = Home:CreateParagraph({Title = "Paragraph", Content = "\n"})
-Paragraph:Set({Title = "Paragraph", Content = table.concat(TestTable, "\n")})
 --//Update FPS and Ping
 function UpdateClient()
     local Ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
