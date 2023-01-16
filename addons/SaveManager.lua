@@ -162,14 +162,14 @@ local SaveManager = {} do
 	function SaveManager:BuildConfigSection(tab)
 		assert(self.Library, 'Must set SaveManager.Library')
 
-		local section = tab:AddRightGroupbox('Configuration')
+		local section = tab:addSection('Configuration')
 
-		section:AddDropdown('SaveManager_ConfigList', { Text = 'Config list', Values = self:RefreshConfigList(), AllowNull = true })
-		section:AddInput('SaveManager_ConfigName',    { Text = 'Config name' })
+		section:addDropdown('SaveManager_ConfigList', { Text = 'Config list', Values = self:RefreshConfigList(), AllowNull = true })
+		section:addTextBox('SaveManager_ConfigName',    { Text = 'Config name' })
 
-		section:AddDivider()
+		--section:AddDivider()
 
-		section:AddButton('Create config', function()
+		section:addButton('Create config', function()
 			local name = Options.SaveManager_ConfigName.Value
 
 			if name:gsub(' ', '') == '' then 
@@ -186,7 +186,7 @@ local SaveManager = {} do
 			Options.SaveManager_ConfigList.Values = self:RefreshConfigList()
 			Options.SaveManager_ConfigList:SetValues()
 			Options.SaveManager_ConfigList:SetValue(nil)
-		end):AddButton('Load config', function()
+		end):addButton('Load config', function()
 			local name = Options.SaveManager_ConfigList.Value
 
 			local success, err = self:Load(name)
@@ -208,14 +208,14 @@ local SaveManager = {} do
 			self.Library:Notify(string.format('Overwrote config %q', name))
 		end)
 		
-		section:AddButton('Autoload config', function()
+		section:addButton('Autoload config', function()
 			local name = Options.SaveManager_ConfigList.Value
 			writefile(self.Folder .. '/settings/autoload.txt', name)
 			SaveManager.AutoloadLabel:SetText('Current autoload config: ' .. name)
 			self.Library:Notify(string.format('Set %q to auto load', name))
 		end)
 
-		section:AddButton('Refresh config list', function()
+		section:addButton('Refresh config list', function()
 			Options.SaveManager_ConfigList.Values = self:RefreshConfigList()
 			Options.SaveManager_ConfigList:SetValues()
 			Options.SaveManager_ConfigList:SetValue(nil)
