@@ -1801,8 +1801,8 @@ function Blacklib:Window(WindowName)
 			ContentText.TextWrapped = true
 
 
-			Content.CanvasSize = UDim2.new(0, 0, 0, string.len(ContentText.Text))
-			ContentText.Size = UDim2.new(0, 381, 0, string.len(ContentText.Text))
+			Content.CanvasSize = UDim2.new(0, 0, 0, string.len(ContentText.Text) - 670)
+			ContentText.Size = UDim2.new(0, 381, 0, string.len(ContentText.Text) - 670)
 
 			ContentText:GetPropertyChangedSignal("Text"):Connect(function()
 				Content.CanvasSize = UDim2.new(0, 0, 0, string.len(ContentText.Text) - 670)
